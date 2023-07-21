@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"classpath:features"},
-        glue = {"com.iosnasu.hrmanagementtaf.config", "com.iosnasu.hrmanagementtaf.stepdefs"}
+        glue = {"com.iosnasu.hrmanagementtaf", "com.iosnasu.hrmanagementtaf.stepdefs"}
 )
 public class CucumberTest {
 }

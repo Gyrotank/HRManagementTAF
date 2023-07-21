@@ -1,4 +1,4 @@
-package com.iosnasu.hrmanagementtaf.config;
+package com.iosnasu.hrmanagementtaf.properties;
 
 import lombok.Getter;
 import lombok.Setter;

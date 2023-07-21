@@ -1,4 +1,4 @@
-package com.iosnasu.hrmanagementtaf.config;
+package com.iosnasu.hrmanagementtaf;
 
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;

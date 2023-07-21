@@ -1,6 +1,6 @@
 package com.iosnasu.hrmanagementtaf.stepdefs;
 
-import com.iosnasu.hrmanagementtaf.config.ApiProperties;
+import com.iosnasu.hrmanagementtaf.properties.ApiProperties;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.builder.RequestSpecBuilder;
