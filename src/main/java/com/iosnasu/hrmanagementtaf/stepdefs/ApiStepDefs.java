@@ -13,7 +13,8 @@ import static io.restassured.RestAssured.*;
 @Log4j2
 @CucumberContextConfiguration
 public class ApiStepDefs {
-    RequestSpecification requestSpecification = new RequestSpecBuilder().setBaseUri("http://localhost:8080/").build();
+    private final String baseUrl = System.getProperty("baseUrl");
+    RequestSpecification requestSpecification = new RequestSpecBuilder().setBaseUri(baseUrl).build();
     Response response;
 
     @When("User sends GET request to {}")
