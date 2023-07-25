@@ -2,9 +2,11 @@ package com.iosnasu.hrmanagementtaf.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
+@Lazy
 public class HomePage extends BasePage {
     private static final String SUFFIX = "home";
 
