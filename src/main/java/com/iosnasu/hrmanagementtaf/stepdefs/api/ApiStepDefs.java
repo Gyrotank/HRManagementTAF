@@ -1,4 +1,4 @@
-package com.iosnasu.hrmanagementtaf.stepdefs;
+package com.iosnasu.hrmanagementtaf.stepdefs.api;
 
 import com.iosnasu.hrmanagementtaf.properties.AppProperties;
 import io.cucumber.java.en.Then;

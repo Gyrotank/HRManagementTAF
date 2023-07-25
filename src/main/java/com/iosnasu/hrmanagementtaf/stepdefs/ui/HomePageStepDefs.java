@@ -1,4 +1,4 @@
-package com.iosnasu.hrmanagementtaf.stepdefs;
+package com.iosnasu.hrmanagementtaf.stepdefs.ui;
 
 import com.iosnasu.hrmanagementtaf.pages.HomePage;
 import com.iosnasu.hrmanagementtaf.properties.AppProperties;
@@ -11,11 +11,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @Log4j2
 @SpringBootTest
-public class UiStepDefs {
+public class HomePageStepDefs {
     @Autowired
     private AppProperties appProperties;
 
-    private final HomePage homePage = new HomePage();
+    @Autowired
+    private HomePage homePage;
 
     @When("User opens home page")
     public void userOpensHomePage() {
