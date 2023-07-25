@@ -1,6 +1,6 @@
 package com.iosnasu.hrmanagementtaf.stepdefs;
 
-import com.iosnasu.hrmanagementtaf.properties.ApiProperties;
+import com.iosnasu.hrmanagementtaf.properties.AppProperties;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.builder.RequestSpecBuilder;
@@ -19,11 +19,11 @@ public class ApiStepDefs {
     Response response;
 
     @Autowired
-    private ApiProperties apiProperties;
+    private AppProperties appProperties;
 
     @When("User sends GET request to {}")
     public void userSendsGetRequestToHome(final String endpoint) {
-        String baseUrl = apiProperties.getBaseUrl();
+        String baseUrl = appProperties.getBaseUrl();
         requestSpecification = new RequestSpecBuilder().setBaseUri(baseUrl).build();
         response = given().spec(requestSpecification).log().all()
                 .get(endpoint).then().log().status().extract().response();
