@@ -1,6 +1,5 @@
 package com.iosnasu.hrmanagementtaf.pages;
 
-import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,21 +22,12 @@ public class BasePage {
         webDriver.manage().window().maximize();
     }
 
-    @PostConstruct
-    public void init() {
-        PageFactory.initElements(webDriver, this);
-    }
-
     public void open(final String baseUrl) {
         openURL(baseUrl);
     }
 
-    public void openURL(final String url) {
+    protected void openURL(final String url) {
         webDriver.get(url);
-    }
-
-    private void waitForElementToBePresent(final WebElement element) {
-        new WebDriverWait(webDriver, WAIT_IN_SECONDS).until(ExpectedConditions.visibilityOf(element));
     }
 
     protected void waitForElement(final WebElement element) {
@@ -47,5 +37,13 @@ public class BasePage {
             PageFactory.initElements(webDriver, this);
             waitForElementToBePresent(element);
         }
+    }
+
+    private void waitForElementToBePresent(final WebElement element) {
+        new WebDriverWait(webDriver, WAIT_IN_SECONDS).until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void quit() {
+        webDriver.quit();
     }
 }
