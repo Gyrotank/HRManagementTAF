@@ -4,21 +4,28 @@ import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Component;
+
+import java.time.Duration;
 
 @Component
 public class BasePage {
-    @Autowired
-    protected WebDriver driver;
+    protected static final Duration WAIT_IN_SECONDS = Duration.ofSeconds(10);
 
-    @Autowired
-    protected PageUtils pageUtils;
+    protected final WebDriver webDriver;
+
+    BasePage() {
+        webDriver = new ChromeDriver();
+        webDriver.manage().window().maximize();
+    }
 
     @PostConstruct
     public void init() {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(webDriver, this);
     }
 
     public void open(final String baseUrl) {
@@ -26,15 +33,19 @@ public class BasePage {
     }
 
     public void openURL(final String url) {
-        driver.get(url);
+        webDriver.get(url);
     }
 
-    protected void waitForElementToBePresent(WebElement element) {
+    private void waitForElementToBePresent(final WebElement element) {
+        new WebDriverWait(webDriver, WAIT_IN_SECONDS).until(ExpectedConditions.visibilityOf(element));
+    }
+
+    protected void waitForElement(final WebElement element) {
         try {
-            pageUtils.waitForElementToBePresent(element);
+            waitForElementToBePresent(element);
         } catch (StaleElementReferenceException e) {
-            PageFactory.initElements(driver, this);
-            pageUtils.waitForElementToBePresent(element);
+            PageFactory.initElements(webDriver, this);
+            waitForElementToBePresent(element);
         }
     }
 }

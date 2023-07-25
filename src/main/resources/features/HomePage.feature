@@ -6,4 +6,4 @@ Feature: Home Page can be accessed
 
   Scenario: User opens Home Page in browser
     When User opens home page
-#    Then User sees main title
+    Then User sees main title

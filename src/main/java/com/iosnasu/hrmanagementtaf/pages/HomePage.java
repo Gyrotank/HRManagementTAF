@@ -12,12 +12,11 @@ public class HomePage extends BasePage {
     private WebElement title;
 
     public void waitForPageToLoad() {
-        waitForElementToBePresent(title);
+        waitForElement(title);
     }
 
     @Override
     public void open(final String baseUrl) {
         openURL(baseUrl + SUFFIX);
-        waitForPageToLoad();
     }
 }
