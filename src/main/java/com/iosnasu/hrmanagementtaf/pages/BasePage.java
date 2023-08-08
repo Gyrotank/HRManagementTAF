@@ -3,10 +3,10 @@ package com.iosnasu.hrmanagementtaf.pages;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +17,8 @@ import java.time.Duration;
 public class BasePage {
     protected static final Duration WAIT_IN_SECONDS = Duration.ofSeconds(10);
 
-    protected final WebDriver webDriver;
-
-    BasePage() {
-        webDriver = new ChromeDriver();
-        webDriver.manage().window().maximize();
-    }
+    @Autowired
+    protected WebDriver webDriver;
 
     public void open(final String baseUrl) {
         openURL(baseUrl);
