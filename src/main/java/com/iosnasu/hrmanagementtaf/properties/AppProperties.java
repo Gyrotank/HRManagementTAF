@@ -11,4 +11,9 @@ import org.springframework.stereotype.Component;
 @Setter
 public class AppProperties {
     private String baseUrl;
+
+    private String dbDriverName;
+    private String dbUrl;
+    private String dbUser;
+    private String dbPassword;
 }
