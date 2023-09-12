@@ -25,8 +25,12 @@ public class ApiStepDefs {
     public void userSendsGetRequestToHome(final String endpoint) {
         String baseUrl = appProperties.getBaseUrl();
         requestSpecification = new RequestSpecBuilder().setBaseUri(baseUrl).build();
-        response = given().spec(requestSpecification).log().all()
-                .get(endpoint).then().log().status().extract().response();
+        response = given().spec(requestSpecification)
+                .log().all()
+                .get(endpoint)
+                .then()
+                .log().status()
+                .extract().response();
     }
 
     @Then("User receives status code of {int}")
