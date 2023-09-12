@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -14,17 +13,20 @@ import java.time.Duration;
 
 @Component
 @Lazy
-public class BasePage {
+public abstract class BasePage {
     protected static final Duration WAIT_IN_SECONDS = Duration.ofSeconds(10);
 
-    @Autowired
-    protected WebDriver webDriver;
+    protected final WebDriver webDriver;
 
-    public void open(final String baseUrl) {
+    protected BasePage(final WebDriver webDriver) {
+        this.webDriver = webDriver;
+    }
+
+    protected void open(final String baseUrl) {
         openURL(baseUrl);
     }
 
-    protected void openURL(final String url) {
+    private void openURL(final String url) {
         webDriver.get(url);
     }
 
