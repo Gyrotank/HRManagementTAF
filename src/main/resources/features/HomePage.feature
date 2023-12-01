@@ -15,4 +15,3 @@ Feature: Home Page can be accessed
   Scenario: User opens Home Page in browser
     When User opens home page
     Then User sees main title
-    And User quits browser

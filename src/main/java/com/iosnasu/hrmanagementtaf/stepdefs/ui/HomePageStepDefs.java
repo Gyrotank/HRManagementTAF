@@ -2,7 +2,6 @@ package com.iosnasu.hrmanagementtaf.stepdefs.ui;
 
 import com.iosnasu.hrmanagementtaf.pages.HomePage;
 import com.iosnasu.hrmanagementtaf.properties.AppProperties;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.extern.log4j.Log4j2;
@@ -27,10 +26,5 @@ public class HomePageStepDefs {
     @Then("User sees main title")
     public void userSeesMainTitle() {
         homePage.waitForPageToLoad();
-    }
-
-    @And("User quits browser")
-    public void userQuitsBrowser() {
-        homePage.quit();
     }
 }
