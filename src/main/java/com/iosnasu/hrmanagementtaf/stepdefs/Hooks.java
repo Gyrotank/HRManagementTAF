@@ -2,26 +2,23 @@ package com.iosnasu.hrmanagementtaf.stepdefs;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import lombok.Getter;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Hooks {
-    @Getter
-    public static WebDriver webDriver;
+    private static WebDriver webDriver;
 
-    @Before
-    public void startTest(final Scenario scenario) {
-        if (scenario.getSourceTagNames().contains("@ui")) {
+    public static WebDriver getWebDriver() {
+        if (webDriver == null) {
             WebDriverManager.chromedriver().clearDriverCache().setup();
             webDriver = new ChromeDriver();
             webDriver.manage().window().maximize();
         }
+        return webDriver;
     }
 
     @After
@@ -29,6 +26,7 @@ public class Hooks {
         if (webDriver != null) {
             webDriver.close();
             webDriver.quit();
+            webDriver = null;
         }
     }
 

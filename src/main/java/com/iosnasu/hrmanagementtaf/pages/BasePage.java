@@ -2,7 +2,6 @@ package com.iosnasu.hrmanagementtaf.pages;
 
 import com.iosnasu.hrmanagementtaf.stepdefs.Hooks;
 import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,30 +16,24 @@ import java.time.Duration;
 public abstract class BasePage {
     protected static final Duration WAIT_IN_SECONDS = Duration.ofSeconds(10);
 
-    protected final WebDriver webDriver;
-
-    protected BasePage() {
-        this.webDriver = Hooks.getWebDriver();
-    }
-
     protected void open(final String baseUrl) {
         openURL(baseUrl);
     }
 
     private void openURL(final String url) {
-        webDriver.get(url);
+        Hooks.getWebDriver().get(url);
     }
 
     protected void waitForElement(final WebElement element) {
         try {
             waitForElementToBePresent(element);
         } catch (StaleElementReferenceException e) {
-            PageFactory.initElements(webDriver, this);
+            PageFactory.initElements(Hooks.getWebDriver(), this);
             waitForElementToBePresent(element);
         }
     }
 
     private void waitForElementToBePresent(final WebElement element) {
-        new WebDriverWait(webDriver, WAIT_IN_SECONDS).until(ExpectedConditions.visibilityOf(element));
+        new WebDriverWait(Hooks.getWebDriver(), WAIT_IN_SECONDS).until(ExpectedConditions.visibilityOf(element));
     }
 }

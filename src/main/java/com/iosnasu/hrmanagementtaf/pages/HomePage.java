@@ -1,5 +1,6 @@
 package com.iosnasu.hrmanagementtaf.pages;
 
+import com.iosnasu.hrmanagementtaf.stepdefs.Hooks;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -14,11 +15,8 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[contains(@class, 'text-center')]")
     WebElement title;
 
-    public HomePage() {
-        PageFactory.initElements(webDriver, this);
-    }
-
     public void waitForPageToLoad() {
+        PageFactory.initElements(Hooks.getWebDriver(), this);
         waitForElement(title);
     }
 
