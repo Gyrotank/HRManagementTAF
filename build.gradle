@@ -7,6 +7,7 @@ plugins {
 
 group = 'com.iosnasu'
 version = '1.0-SNAPSHOT'
+sourceCompatibility = '19'
 
 def cucumberVersion = '7.14.0'
 def log4jVersion = '2.20.0'
@@ -52,4 +53,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.iosnasu.hrmanagementtaf.CucumberSpringContextConfiguration'
+        )
+    }
 }
