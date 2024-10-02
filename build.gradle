@@ -9,7 +9,7 @@ group = 'com.iosnasu'
 version = '1.0-SNAPSHOT'
 sourceCompatibility = '19'
 
-def cucumberVersion = '7.18.0'
+def cucumberVersion = '7.18.1'
 def log4jVersion = '2.23.1'
 
 configurations {
@@ -34,20 +34,20 @@ dependencies {
     implementation 'io.rest-assured:rest-assured:5.4.0'
     implementation "org.apache.logging.log4j:log4j-core:${log4jVersion}"
     implementation "org.apache.logging.log4j:log4j-api:${log4jVersion}"
-    implementation 'org.seleniumhq.selenium:selenium-java:4.21.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.22.0'
     implementation "com.google.code.findbugs:jsr305:3.0.2"
-    implementation 'org.checkerframework:checker-qual:3.42.0'
-    implementation 'com.google.errorprone:error_prone_annotations:2.26.1'
+    implementation 'org.checkerframework:checker-qual:3.45.0'
+    implementation 'com.google.errorprone:error_prone_annotations:2.33.0'
     implementation 'com.google.j2objc:j2objc-annotations:3.0.0'
     implementation "io.github.bonigarcia:webdrivermanager:5.8.0"
-    implementation "com.aventstack:extentreports:5.1.1"
+    implementation 'com.aventstack:extentreports:5.1.2'
     implementation "tech.grasshopper:extentreports-cucumber7-adapter:1.14.0"
     compileOnly "org.projectlombok:lombok"
     developmentOnly "org.springframework.boot:spring-boot-devtools"
     runtimeOnly "com.mysql:mysql-connector-j"
     annotationProcessor "org.projectlombok:lombok"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation platform('org.junit:junit-bom:5.10.3')
     testImplementation "org.junit.jupiter:junit-jupiter"
 }
 
