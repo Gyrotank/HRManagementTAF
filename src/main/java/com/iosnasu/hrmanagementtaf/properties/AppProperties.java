@@ -16,4 +16,6 @@ public class AppProperties {
     private String dbUrl;
     private String dbUser;
     private String dbPassword;
+
+    private String awsRegion;
 }
